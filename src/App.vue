@@ -14,15 +14,31 @@
 
       <transition name="fade">
 
-        <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+        <div class="alert alert-primary" v-if="mostrar">Animações no Vue com fade</div>
 
       </transition>
 
       <transition name="zoom">
 
-        <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+        <div class="alert alert-primary" v-if="mostrar">Animações no Vue com zoom</div>
 
       </transition>   
+
+       <transition 
+       
+        @before-enter="beforeEnter"
+        @enter="enter"
+        @after-enter="afterEnter"
+        @enter-cancelled="enterCancelled"
+        
+        @beforeLeave="beforeLeave"
+        @leave="leave"
+        @afterLeave="afterLeave"
+        @leaveCancelled="leaveCancelled">
+
+        <div class="alert alert-primary" v-if="mostrar">Animações no Vue com JS</div>
+
+      </transition> 
     
     </div>
   </div>
@@ -34,6 +50,37 @@ export default {
     return {
       mostrar:true
     }   
+  },
+  methods:{
+    beforeEnter(el){
+      console.log('beforeEnter')
+    },
+    enter(el, done){
+      console.log('enter')
+      done()
+    },
+    afterEnter(el){
+      console.log('afterEnter')
+    },
+    enterCancelled(el){
+      console.log('enterCancelled')
+    },
+
+    beforeLeave(el){
+      console.log('beforeLeave')
+    },
+    leave(el, done){
+      console.log('leave')
+      //enceramos a animação com função done.
+      done()  
+    },
+    afterLeave(el){
+      console.log('afterLeave')
+    },
+    leaveCancelled(el){
+      console.log('leaveCancelled')
+    }
+
   }
 }
 </script>
