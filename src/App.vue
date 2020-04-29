@@ -16,6 +16,12 @@
 
         <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
 
+      </transition>
+
+      <transition name="zoom">
+
+        <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+
       </transition>   
     
     </div>
@@ -33,6 +39,18 @@ export default {
 </script>
 
 <style scoped>
+
+  .zoom-enter, .zoom-leave-to{
+    transform: scale(0);
+  }
+
+  .zoom-enter-active, .zoom-leave-active{
+    transition: transform 0.5s;
+  }
+
+  .zoom-enter-to, .zoom-leave {
+    transform: scale(1);
+  }
 
   .fade-enter, .fade-leave-to{
     opacity: 0;
