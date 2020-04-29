@@ -8,7 +8,22 @@
       </div>
     </div>
 
-    <div class="container"></div>
+    <div class="container">
 
+      <button class="btn btn-primary mb-3" @click="mostrar =! mostrar">Alterar</button>
+
+      <div class="alert alert-primary" v-if="mostrar">Animações no Vue</div>
+    
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  data (){
+    return {
+      mostrar:true
+    }   
+  }
+}
+</script>
